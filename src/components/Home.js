@@ -5,7 +5,7 @@ import { FacebookLogin } from './FacebookLogin';
 export const Home = () => (
         <div>
             <NavbarInstance />
-            	<p className="dummyTitle"> Home </p>
+            <p className="dummyTitle"> Home </p>
             <FacebookLogin />
         </div>
     )

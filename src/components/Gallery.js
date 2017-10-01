@@ -5,7 +5,7 @@ import { FacebookLogin } from './FacebookLogin';
 export const Gallery = () => (
         <div>
             <NavbarInstance />
-            	<p className="dummyTitle"> Gallery </p>
+            <p className="dummyTitle"> Gallery </p>
             <FacebookLogin />
         </div>
     )
