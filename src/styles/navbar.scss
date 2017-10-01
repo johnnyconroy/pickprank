@@ -2,14 +2,21 @@
 
 .navbar {
   background-color: $color-1;
-}
 
-.navbar-brand {
-  padding-top: 0;
-  padding-bottom: 4px;
-}
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 4px;
+  }
 
-#Logo {
-  max-height:100%;
-  margin-top: 2px;
+  #Logo {
+    max-height:100%;
+    margin-top: 2px;
+  }
+
+  #gallery-link {
+    color: $color-2;
+    &:hover {
+      color: $color-3;
+    }
+  }
 }
