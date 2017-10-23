@@ -1,10 +1,15 @@
 @import "styles/variables.scss";
 @import "styles/navbar.scss";
 @import "styles/facebookLogin.scss";
+@import "styles/home.scss";
+@import "styles/gallery.scss";
+@import "styles/footer.scss";
+@import "styles/thankyou.scss";
 @import "styles/dummyTitle.scss";
+@import "styles/materialLoader.scss";
 
 body {
   margin: 0;
   padding: 0;
   font-family: $font-family-1;
-}
+} 

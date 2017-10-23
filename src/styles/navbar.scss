@@ -1,22 +1,35 @@
 @import "variables.scss";
 
 .navbar {
-  background-color: $color-1;
-
-  .navbar-brand {
-    padding-top: 0;
-    padding-bottom: 4px;
-  }
-
-  #Logo {
-    max-height:100%;
-    margin-top: 2px;
-  }
-
-  #gallery-link {
-    color: $color-2;
-    &:hover {
-      color: $color-3;
+    background-color: $color-1;
+    z-index: 9999;
+    .navbar-brand {
+        padding-top: 0;
+        padding-bottom: 4px;
     }
-  }
+
+    #Logo {
+        max-height:100%;
+        margin-top: 2px;
+    }
+
+    #navbarItemProfile {
+        cursor: default;
+        #navbarProfile {
+            display: flex;
+            img {
+                border-radius: 100%;
+                width: 30px;
+                height: 30px;
+                box-shadow: 0 0 0 2px tomato; 
+                margin-right: 10px;
+                position: relative;
+                top: -4px;
+            }
+            p {
+                color: tomato;
+            }
+        }  
+    }
+
 }
