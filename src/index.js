@@ -1,16 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
+import WebFont from 'webfontloader'
+import registerServiceWorker from './registerServiceWorker'
 import 'bootstrap/dist/css/bootstrap.css'
-import WebFont from 'webfontloader';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import './index.css'
+import { App } from './App'
 
 WebFont.load({
-  google: {
+    google: {
     families: ['Baloo', 'Hind', 'Roboto', 'sans-serif']
-  }
-});
+    }
+})
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+window.React = React
+
+render(
+        <App />,
+    document.getElementById('root')
+)
+
+registerServiceWorker()
