@@ -12,9 +12,12 @@
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
     "react-material-icons": "^1.0.2",
+    "react-redux": "^5.0.6",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.11",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
@@ -25,4 +28,4 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
-} 
+}
