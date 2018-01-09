@@ -1,31 +1,29 @@
-import appReducer from './reducers'
-import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
+import appReducer from './reducers'
+import sampleData from './initialState'
 
-const consoleMessages = store => next => action => {
-
+const logger = store => next => action => {
 	let result
-
-	console.groupCollapsed(`dispatching action => ${action.type}`)
+	console.group('dispatching action => ', action.type)
+	console.log('prev states', store.getState())
+	console.log('action', action)
 	result = next(action)
-
-	let { authed, loading, user, URLs } = store.getState()
-
-	console.log(`
-
-		authed: ${authed}
-		loading: ${loading}
-		user: ${user}
-		URLs: ${URLs}
-
-	`)
-
+	console.log('next state', store.getState())
 	console.groupEnd()
-
 	return result
-
 }
 
-export default (initialState={}) => {
-	return applyMiddleware(thunk,consoleMessages)(createStore)(appReducer, initialState)
+const saver = store => next => action => {
+	let result = next(action)
+	localStorage['redux-store'] = JSON.stringify(store.getState())
+	return result
+}
+
+export default (initialState = sampleData) => {
+	return applyMiddleware(logger, saver)(createStore)(
+		appReducer,
+		(localStorage["redux-store"]) ?
+		    JSON.parse(localStorage["redux-store"]) :
+		    sampleData
+	)
 }

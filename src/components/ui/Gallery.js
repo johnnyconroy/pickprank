@@ -1,10 +1,9 @@
 import React from 'react'
-import { FacebookLogin } from './FacebookLogin'
 import PropTypes from 'prop-types'
+import { FacebookLogin } from './FacebookLogin'
 import { MaterialLoader } from './MaterialLoader'
 
-export const Gallery = ({URLs, authed}) => {
-	
+export const Gallery = ({URLs, authed, requestSignIn, location}) => {
 	let listComponent = <div id="gallery-loader"><MaterialLoader /></div>
 	const thumbnails = URLs.thumbnails
 	if (thumbnails !== undefined && thumbnails.length > 0 ) {
@@ -13,11 +12,11 @@ export const Gallery = ({URLs, authed}) => {
 				<img src={url} alt="gallery"></img>
 			</li>
 		))
-	} 
+	}
 
 	return(
         <div>
-        	<FacebookLogin authed={authed}/>
+        	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
             <p className="dummyTitle"> Gallery </p>
             <ul id="gallery-list">{listComponent}</ul>
         </div>
@@ -31,4 +30,3 @@ Gallery.defaultProps = {
 Gallery.propTypes = {
   URLs: PropTypes.object
 }
-

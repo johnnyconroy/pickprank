@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { LinkContainer } from 'react-router-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
-import { logout } from '../../helpers/firebaseFunctions' 
+import { logout } from '../../helpers/firebaseFunctions'
 import logo from '../../images/simple_fuck_logo_right.png'
 import profile_pic_placeholder from '../../images/silhouette.jpg'
 

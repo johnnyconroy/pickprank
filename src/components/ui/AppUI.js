@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import { NavbarInstance } from './NavbarInstance'
-import { Home } from './Home'
+import { Home } from '../containers/Home'
 import { Gallery } from './Gallery'
 import { MyPranks } from './MyPranks'
-import { Footer } from './Footer'
+import { Footer } from '../containers/Footer'
 import { MaterialLoader } from './MaterialLoader'
 import { ThankYou } from './ThankYou'
 import { Whoops404 } from './Whoops404'
@@ -22,30 +23,13 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
   )
 }
 
-export class App extends Component {
-    constructor() {
-        super()
-        this.state = {
-            authed: false,
-            loading: true,
-            user: null,
-            URLs: {},
-        }
-    }
+export class AppUI extends Component {
     componentDidMount() {
         this.removeAuthListener = firebaseAuth().onAuthStateChanged((user) => {
             if (user) {
-                this.setState({
-                    authed: true,
-                    loading: false,
-                    user: user,
-                })
+                this.props.switchToLoggedIn(user)
             } else {
-                this.setState({
-                    authed: false,
-                    loading: false,
-                    user: null,
-                })
+                this.props.switchToLoggedOut()
             }
         })
         firebaseAuth().getRedirectResult().then(function(result) {
@@ -59,23 +43,21 @@ export class App extends Component {
                 console.log(error.message)
             })
         getGalleryURLs.then( (URLs) => {
-            this.setState({
-                    URLs: URLs
-                })
+            this.props.storeGalleryURLs(URLs)
         })
     }
     componentWillUnmount() {
         this.removeAuthListener()
     }
     render() {
-        const {URLs, authed, user, loading} = this.state
+        const {authed, user, loading, URLs, requestSignIn} = this.props
         return loading === true ? <MaterialLoader /> : (
             <BrowserRouter>
                 <div className="main">
                     <NavbarInstance authed={authed} user={user}/>
                     <Switch>
-                        <Route exact path="/" render={() => <Home authed={authed}/>}/>
-                        <Route path="/gallery" render={() => <Gallery URLs={URLs} authed={authed}/>}/>
+                        <Route exact path="/" render={(props) => <Home authed={authed} requestSignIn={requestSignIn} {...props}/>}/>
+                        <Route path="/gallery" render={(props) => <Gallery URLs={URLs} authed={authed} requestSignIn={requestSignIn} {...props}/>}/>
                         <Route path="/thankyou" component={ThankYou}/>
                         <PrivateRoute authed={authed} path="/mypranks" component={MyPranks}/>
                         <Route component={Whoops404}/>
@@ -85,4 +67,15 @@ export class App extends Component {
             </BrowserRouter>
         )
     }
+}
+
+AppUI.propTypes = {
+    authed: PropTypes.bool,
+    loading: PropTypes.bool,
+    user: PropTypes.object,
+    URLs: PropTypes.object,
+    requestSignIn: PropTypes.func,
+    switchToLoggedIn: PropTypes.func,
+    switchToLoggedOut: PropTypes.func,
+    storeGalleryURLs: PropTypes.func
 }

@@ -4,10 +4,10 @@ import WebFont from 'webfontloader'
 import registerServiceWorker from './registerServiceWorker'
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css'
-import sampleData from './store/initialState'
 import storeFactory from './store'
+import sampleData from './store/initialState'
 import { Provider } from 'react-redux'
-import { App } from './App'
+import { App } from './components/containers/App'
 
 WebFont.load({
     google: {
@@ -15,15 +15,7 @@ WebFont.load({
     }
 })
 
-const initialState = (localStorage["redux-store"]) ?
-    JSON.parse(localStorage["redux-store"]) :
-    sampleData
-
-const saveState = () =>
-    localStorage["redux-store"] = JSON.stringify(store.getState())
-
-const store = storeFactory(initialState)
-store.subscribe(saveState)
+const store = storeFactory(sampleData)
 
 window.React = React
 window.store = store

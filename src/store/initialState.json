@@ -4,5 +4,7 @@
 		"loading": true,
 		"user": null
 	},
-	"URLs": {}
+	"URLs": {},
+	"isContactModalVisible": false,
+	"homeTransitionClass": "home-container"
 }

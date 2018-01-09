@@ -1,27 +1,23 @@
 import React, { Component } from 'react'
 import { Carousel } from 'react-bootstrap'
 import { FacebookLogin } from './FacebookLogin'
-import app_1_thumb from '../images/screenshots/app_1_thumb.png'
-import app_2_thumb from '../images/screenshots/app_2_thumb.png'
-import app_3_thumb from '../images/screenshots/app_3_thumb.png'
+import app_1_thumb from '../../images/screenshots/app_1_thumb.png'
+import app_2_thumb from '../../images/screenshots/app_2_thumb.png'
+import app_3_thumb from '../../images/screenshots/app_3_thumb.png'
 
-export class Home extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			homeClass: 'home-container'
-		}
+export class HomeUI extends Component {
+	componentWillMount() {
+		this.props.activateHomeTransition()
 	}
 	componentDidMount() {
 		setTimeout( () => {
-			this.setState({
-				homeClass: 'home-container show'
-			})}, 200) 	
+			this.props.deactivateHomeTransition()
+		}, 200)
 	}
 	render() {
 		return (
-	        <div className={this.state.homeClass}>
-	        	<FacebookLogin authed={this.props.authed}/>
+	        <div className={this.props.homeTransitionClass}>
+	        	<FacebookLogin authed={this.props.authed} requestSignIn={this.props.requestSignIn}/>
 	        	<div id="background-container"></div>
 		        <div id="pitchText">
 		            <p> <span>Create customizable pranks and send them to your friends! </span> </p>
@@ -50,5 +46,3 @@ export class Home extends Component {
 		)
 	}
 }
-
-

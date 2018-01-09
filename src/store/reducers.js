@@ -18,6 +18,13 @@ export const userData = (state={}, action) => {
         		"user": null
         	}
 
+        case C.REQUEST_USER_SIGN_IN :
+            return {
+                "authed": false,
+                "loading" : true,
+                "user": null
+            }
+
         default:
             return state
     }
@@ -25,10 +32,40 @@ export const userData = (state={}, action) => {
 
 export const URLs = (state={}, action) =>
     (action.type === C.STORE_GALLERY_URLS) ?
-      	action.payload :
-      	state
+        action.payload :
+        state
+
+export const isContactModalVisible = (state=false, action) => {
+    switch(action.type) {
+
+        case C.SHOW_CONTACT_MODAL :
+            return true
+
+        case C.HIDE_CONTACT_MODAL :
+            return false
+
+        default:
+            return state
+    }
+}
+
+export const homeTransitionClass = (state="home-container", action) => {
+    switch(action.type) {
+
+        case C.ACTIVATE_HOME_TRANSITION :
+            return "home-container"
+
+        case C.DEACTIVATE_HOME_TRANSITION :
+            return "home-container show"
+
+        default:
+            return state
+    }
+}
 
 export default combineReducers({
     userData,
-    URLs
+    URLs,
+    isContactModalVisible,
+    homeTransitionClass
 })
