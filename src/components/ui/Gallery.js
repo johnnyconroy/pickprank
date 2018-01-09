@@ -24,9 +24,15 @@ export const Gallery = ({URLs, authed, requestSignIn, location}) => {
 }
 
 Gallery.defaultProps = {
-  URLs: {}
+  URLs: {},
+  authed: false,
+  requestSignIn: f => f,
+  location: ""
 }
 
 Gallery.propTypes = {
-  URLs: PropTypes.object
+  URLs: PropTypes.object,
+  authed: PropTypes.bool,
+  requestSignIn: PropTypes.func,
+  location: PropTypes.string,
 }

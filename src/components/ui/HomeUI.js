@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Carousel } from 'react-bootstrap'
 import { FacebookLogin } from './FacebookLogin'
 import app_1_thumb from '../../images/screenshots/app_1_thumb.png'
@@ -15,9 +16,10 @@ export class HomeUI extends Component {
 		}, 200)
 	}
 	render() {
+		const { homeTransitionClass, authed, requestSignIn } = this.props
 		return (
-	        <div className={this.props.homeTransitionClass}>
-	        	<FacebookLogin authed={this.props.authed} requestSignIn={this.props.requestSignIn}/>
+	        <div className={homeTransitionClass}>
+	        	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
 	        	<div id="background-container"></div>
 		        <div id="pitchText">
 		            <p> <span>Create customizable pranks and send them to your friends! </span> </p>
@@ -45,4 +47,16 @@ export class HomeUI extends Component {
 	        </div>
 		)
 	}
+}
+
+HomeUI.defaultProps = {
+  authed: false,
+  homeTransitionClass: "home-container",
+  requestSignIn: f => f
+}
+
+HomeUI.propTypes = {
+  authed: PropTypes.bool,
+  homeTransitionClass: PropTypes.string,
+  requestSignIn: PropTypes.func
 }

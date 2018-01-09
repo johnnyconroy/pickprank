@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button, Modal } from 'react-bootstrap'
 
 export const FooterUI = ({isContactModalVisible, showContactModal, hideContactModal}) => (
@@ -53,3 +54,15 @@ export const FooterUI = ({isContactModalVisible, showContactModal, hideContactMo
 		</section>
 	</div>
 )
+
+FooterUI.defaultProps = {
+  isContactModalVisible: false,
+  showContactModal: f => f,
+  hideContactModal: f => f
+}
+
+FooterUI.propTypes = {
+  isContactModalVisible: PropTypes.bool,
+  showContactModal: PropTypes.func,
+  hideContactModal: PropTypes.func,
+}

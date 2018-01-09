@@ -69,6 +69,17 @@ export class AppUI extends Component {
     }
 }
 
+AppUI.defaultProps = {
+    authed: false,
+    loading: false,
+    user: {},
+    URLs: {},
+    requestSignIn: f => f,
+    switchToLoggedIn: f => f,
+    switchToLoggedOut: f => f,
+    storeGalleryURLs: f => f,
+}
+
 AppUI.propTypes = {
     authed: PropTypes.bool,
     loading: PropTypes.bool,

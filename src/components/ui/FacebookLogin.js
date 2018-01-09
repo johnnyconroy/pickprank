@@ -14,9 +14,11 @@ export const FacebookLogin = ({authed, requestSignIn}) => (
 )
 
 FacebookLogin.defaultProps = {
-  authed: false
+  authed: false,
+  requestSignIn: f => f
 }
 
 FacebookLogin.propTypes = {
-  authed: PropTypes.bool
+  authed: PropTypes.bool,
+  requestSignIn: PropTypes.func,
 }
