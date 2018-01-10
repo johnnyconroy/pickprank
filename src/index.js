@@ -9,6 +9,7 @@ import sampleData from './store/initialState'
 import { Provider } from 'react-redux'
 import { App } from './components/containers/App'
 
+
 WebFont.load({
     google: {
     families: ['Baloo', 'Hind', 'Roboto', 'sans-serif']
