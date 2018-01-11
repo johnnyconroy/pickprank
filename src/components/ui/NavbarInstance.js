@@ -18,6 +18,13 @@ export const NavbarInstance = ({authed, user}) => (
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
+            <div id="navbarProfileMobile">
+                {localStorage.accessToken !== "undefined" ?
+                    <img src={`https://graph.facebook.com/me/picture?access_token=${localStorage.accessToken}`}
+                         alt="profile-pic"></img> :
+                    <img src={profile_pic_placeholder} alt="profile-pic"></img>}
+                <p>{user.displayName.split(" ")[0]}</p>
+            </div>
             <Navbar.Collapse>
                 {authed === false ?
                     (<div>

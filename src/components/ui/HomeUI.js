@@ -5,20 +5,22 @@ import { FacebookLogin } from './FacebookLogin'
 import app_1_thumb from '../../images/screenshots/app_1_thumb.png'
 import app_2_thumb from '../../images/screenshots/app_2_thumb.png'
 import app_3_thumb from '../../images/screenshots/app_3_thumb.png'
+import wallpaper from '../../images/blue_pastel_light.png'
 
 export class HomeUI extends Component {
 	componentWillMount() {
 		this.props.activateHomeTransition()
 	}
-	componentDidMount() {
-		setTimeout( () => {
-			this.props.deactivateHomeTransition()
-		}, 200)
+	showHome() {
+		// triggered when the background image is loaded (it's the heaviest file to download)
+		this.props.deactivateHomeTransition()
 	}
 	render() {
 		const { homeTransitionClass, authed, requestSignIn } = this.props
+		const divStyle = {display: "none"}
 		return (
 	        <div className={homeTransitionClass}>
+				<img src={wallpaper} onLoad={this.showHome.bind(this)} alt="image tag triggering showHome" style={divStyle}/>
 	        	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
 	        	<div id="background-container"></div>
 		        <div id="pitchText">
