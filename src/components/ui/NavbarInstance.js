@@ -19,7 +19,7 @@ export const NavbarInstance = ({authed, user}) => (
                 <Navbar.Toggle />
             </Navbar.Header>
             <div id="navbarProfileMobile">
-                <Profile user={user}/>
+                {authed === false ? <div> </div> : <Profile user={user}/>}
             </div>
             <Navbar.Collapse>
                 {authed === false ?
