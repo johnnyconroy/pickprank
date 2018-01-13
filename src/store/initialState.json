@@ -4,7 +4,8 @@
 		"loading": true,
 		"user": null
 	},
-	"URLs": {},
+	"galleryURLs": {},
+	"myPranksURLs": {},
 	"isContactModalVisible": false,
 	"homeTransitionClass": "home-container"
 }

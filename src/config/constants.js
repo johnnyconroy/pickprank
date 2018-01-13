@@ -3,7 +3,7 @@ import firebase from 'firebase'
 /**
  * Logger
  */
- export const activateLogger = false
+ export const activateLogger = true
 
 /**
  * Firebase
@@ -28,7 +28,8 @@ export const firebaseAuth = firebase.auth
     REQUEST_USER_SIGN_IN: "REQUEST_USER_SIGN_IN",
     SWITCH_USER_TO_LOGGED_IN: "SWITCH_USER_TO_LOGGED_IN",
     SWITCH_USER_TO_LOGGED_OUT: "SWITCH_USER_TO_LOGGED_OUT",
-    STORE_GALLERY_URLS: "STORE_GALLERY_URLS",
+    STORE_galleryURLs: "STORE_galleryURLs",
+    STORE_myPranksURLs: "STORE_myPranksURLs",
     SHOW_CONTACT_MODAL: "SHOW_CONTACT_MODAL",
     HIDE_CONTACT_MODAL: "HIDE_CONTACT_MODAL",
     ACTIVATE_HOME_TRANSITION: "ACTIVATE_HOME_TRANSITION",

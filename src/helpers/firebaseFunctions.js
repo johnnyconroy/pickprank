@@ -27,7 +27,7 @@ export function login () {
 export const getGalleryURLs = new Promise((resolve, reject) => {
 	const dbRefGallery = databaseRef.child('/availablePicPrancks')
 	const storageRefGallery = storageRef.child('/availablePicPrancks')
-	let URLs = {
+	let galleryURLs = {
 			images: [],
         	thumbnails: []
         }
@@ -38,37 +38,68 @@ export const getGalleryURLs = new Promise((resolve, reject) => {
 				const picture = galleryObject[key]
 				const thumbnailPath = `${picture}/web/thumbnail_${picture}.png`
 				storageRefGallery.child(thumbnailPath).getDownloadURL().then( url => {
-					URLs["thumbnails"].push(url)
+					galleryURLs["thumbnails"].push(url)
 				})
 				.then( () => {
 						const imagePath = `${picture}/web/image_${picture}.png`
 						storageRefGallery.child(imagePath).getDownloadURL().then( url => {
-						URLs["images"].push(url)
+						galleryURLs["images"].push(url)
 						})
 						.then( () => {
-							if ( URLs["images"].length === galleryObject.length ) {
-								resolve(URLs)
+							if ( galleryURLs["images"].length === galleryObject.length ) {
+								resolve(galleryURLs)
 							}
 						})
 						.catch( e => {
-							console.log("gallery image THEN error") 
+							console.log("gallery image THEN error")
 						})
 				})
 				.catch( e => {
 					console.log("gallery thumbnail THEN error")
 				})
 			}
-        } catch(e) { 
+        } catch(e) {
 			console.log(e)
         }
 	})
 })
 
-
-
-
-
-
-
-
-
+export const getMyPranksURLs = new Promise((resolve, reject) => {
+	const dbRefMyPranks = databaseRef.child('/myPranksSample')
+	const storageRefMyPranks = storageRef.child('/myPranksSample')
+	let myPranksURLs = {
+			images: [],
+        	thumbnails: []
+        }
+	dbRefMyPranks.once('value', snap => {
+        const myPranksObject = snap.val()
+        try {
+			for ( let key in myPranksObject ) {
+				const picture = myPranksObject[key]
+				const thumbnailPath = `${picture}/thumbnail_${picture}.png`
+				storageRefMyPranks.child(thumbnailPath).getDownloadURL().then( url => {
+					myPranksURLs["thumbnails"].push(url)
+				})
+				.then( () => {
+						const imagePath = `${picture}/image_${picture}.png`
+						storageRefMyPranks.child(imagePath).getDownloadURL().then( url => {
+						myPranksURLs["images"].push(url)
+						})
+						.then( () => {
+							if ( myPranksURLs["images"].length === myPranksObject.length ) {
+								resolve(myPranksURLs)
+							}
+						})
+						.catch( e => {
+							console.log("myPranks image THEN error")
+						})
+				})
+				.catch( e => {
+					console.log("myPranks thumbnail THEN error")
+				})
+			}
+        } catch(e) {
+			console.log(e)
+        }
+	})
+})

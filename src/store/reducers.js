@@ -30,8 +30,13 @@ export const userData = (state={}, action) => {
     }
 }
 
-export const URLs = (state={}, action) =>
-    (action.type === C.STORE_GALLERY_URLS) ?
+export const galleryURLs = (state={}, action) =>
+    (action.type === C.STORE_galleryURLs) ?
+        action.payload :
+        state
+
+export const myPranksURLs = (state={}, action) =>
+    (action.type === C.STORE_myPranksURLs) ?
         action.payload :
         state
 
@@ -65,7 +70,8 @@ export const homeTransitionClass = (state="home-container", action) => {
 
 export default combineReducers({
     userData,
-    URLs,
+    galleryURLs,
+    myPranksURLs,
     isContactModalVisible,
     homeTransitionClass
 })

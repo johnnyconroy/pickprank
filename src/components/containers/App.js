@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { requestUserSignIn,
          switchUserToLoggedIn,
          switchUserToLoggedOut,
-         storeUserGalleryURLs } from '../../store/actions'
+         storeUserGalleryURLs,
+         storeUserMyPranksURLs } from '../../store/actions'
 import { AppUI } from '../ui/AppUI'
 
 
@@ -10,7 +11,8 @@ const mapStateToProps = (state) => ({
     authed: state.userData.authed,
     loading: state.userData.loading,
     user: state.userData.user,
-    URLs: state.URLs,
+    galleryURLs: state.galleryURLs,
+    myPranksURLs: state.myPranksURLs,
 })
 
 const mapDispatchToProps = (dispatch) =>
@@ -30,9 +32,14 @@ const mapDispatchToProps = (dispatch) =>
                 switchUserToLoggedOut()
             )
         },
-        storeGalleryURLs(URLs) {
+        storeUserGalleryURLs(galleryURLs) {
             dispatch(
-                storeUserGalleryURLs(URLs)
+                storeUserGalleryURLs(galleryURLs)
+            )
+        },
+        storeUserMyPranksURLs(myPranksURLs) {
+            dispatch(
+                storeUserMyPranksURLs(myPranksURLs)
             )
         }
     })

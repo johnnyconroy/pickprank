@@ -17,10 +17,16 @@ export const switchUserToLoggedOut = () =>
         type: C.SWITCH_USER_TO_LOGGED_OUT
     })
 
-export const storeUserGalleryURLs = URLs =>
+export const storeUserGalleryURLs = galleryURLs =>
     ({
-        type: C.STORE_GALLERY_URLS,
-        payload: URLs
+        type: C.STORE_galleryURLs,
+        payload: galleryURLs
+    })
+
+export const storeUserMyPranksURLs = myPranksURLs =>
+    ({
+        type: C.STORE_myPranksURLs,
+        payload: myPranksURLs
     })
 
 export const showContactModal = () =>

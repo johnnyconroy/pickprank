@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { FacebookLogin } from './FacebookLogin'
 import { MaterialLoader } from './MaterialLoader'
 
-export const Gallery = ({URLs, authed, requestSignIn}) => {
+export const Gallery = ({galleryURLs, authed, requestSignIn}) => {
 	let listComponent = <div className="gallery-loader"><MaterialLoader /></div>
-	const thumbnails = URLs.thumbnails
+	const thumbnails = galleryURLs.thumbnails
 	if (thumbnails !== undefined && thumbnails.length > 0 ) {
 		listComponent = thumbnails.map( (url, index) => (
 			<li key={index}>
@@ -24,13 +24,13 @@ export const Gallery = ({URLs, authed, requestSignIn}) => {
 }
 
 Gallery.defaultProps = {
-  URLs: {},
+  galleryURLs: {},
   authed: false,
   requestSignIn: f => f
 }
 
 Gallery.propTypes = {
-  URLs: PropTypes.object,
+  galleryURLs: PropTypes.object,
   authed: PropTypes.bool,
   requestSignIn: PropTypes.func
 }

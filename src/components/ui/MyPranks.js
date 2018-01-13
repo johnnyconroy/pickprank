@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { MaterialLoader } from './MaterialLoader'
 
-export const MyPranks = ({URLs, authed}) => {
+export const MyPranks = ({myPranksURLs, authed}) => {
 	let listComponent = <div className="gallery-loader"><MaterialLoader /></div>
-	const thumbnails = URLs.thumbnails
+	const thumbnails = myPranksURLs.thumbnails
 	if (thumbnails !== undefined && thumbnails.length > 0 ) {
 		listComponent = thumbnails.map( (url, index) => (
 			<li key={index}>
@@ -22,11 +22,11 @@ export const MyPranks = ({URLs, authed}) => {
 }
 
 MyPranks.defaultProps = {
-  URLs: {},
+  myPranksURLs: {},
   authed: false,
 }
 
 MyPranks.propTypes = {
-  URLs: PropTypes.object,
+  myPranksURLs: PropTypes.object,
   authed: PropTypes.bool,
 }
