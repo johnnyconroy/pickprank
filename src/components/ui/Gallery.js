@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { FacebookLogin } from './FacebookLogin'
 import { MaterialLoader } from './MaterialLoader'
 
-export const Gallery = ({URLs, authed, requestSignIn, location}) => {
-	let listComponent = <div id="gallery-loader"><MaterialLoader /></div>
+export const Gallery = ({URLs, authed, requestSignIn}) => {
+	let listComponent = <div className="gallery-loader"><MaterialLoader /></div>
 	const thumbnails = URLs.thumbnails
 	if (thumbnails !== undefined && thumbnails.length > 0 ) {
 		listComponent = thumbnails.map( (url, index) => (
@@ -18,7 +18,7 @@ export const Gallery = ({URLs, authed, requestSignIn, location}) => {
         <div>
         	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
             <p className="dummyTitle"> Gallery </p>
-            <ul id="gallery-list">{listComponent}</ul>
+            <ul className="gallery-list">{listComponent}</ul>
         </div>
 	)
 }
@@ -26,13 +26,11 @@ export const Gallery = ({URLs, authed, requestSignIn, location}) => {
 Gallery.defaultProps = {
   URLs: {},
   authed: false,
-  requestSignIn: f => f,
-  location: ""
+  requestSignIn: f => f
 }
 
 Gallery.propTypes = {
   URLs: PropTypes.object,
   authed: PropTypes.bool,
-  requestSignIn: PropTypes.func,
-  location: PropTypes.string,
+  requestSignIn: PropTypes.func
 }

@@ -8,6 +8,10 @@
         padding-bottom: 4px;
     }
 
+    .profileContainer {
+        display: flex;
+    }
+
     #Logo {
         max-height:100%;
         margin-top: 2px;
@@ -39,7 +43,6 @@
         @media screen and (min-width: $break-medium) {
             display: none;
         }
-        display: flex;
         margin-left: auto;
         margin-right: auto;
         padding: 5px;
@@ -47,7 +50,6 @@
         position: absolute;
         top: -5px;
         left: 50%;
-
         img {
             border-radius: 100%;
             width: 30px;

@@ -12,12 +12,12 @@ import { Whoops404 } from './Whoops404'
 import { firebaseAuth } from '../../config/constants'
 import { getGalleryURLs } from '../../helpers/firebaseFunctions'
 
-function PrivateRoute ({component: Component, authed, ...rest}) {
+function PrivateRoute ({URLs, authed, component: Component, ...rest}) {
   return (
     <Route
       {...rest}
       render={(props) => authed === true
-        ? <Component {...props} />
+        ? <Component URLs={URLs} authed={authed} {...props} />
         : <Redirect to={{pathname: '/', state: {from: props.location}}} />}
     />
   )
@@ -59,7 +59,7 @@ export class AppUI extends Component {
                         <Route exact path="/" render={(props) => <Home authed={authed} requestSignIn={requestSignIn} {...props}/>}/>
                         <Route path="/gallery" render={(props) => <Gallery URLs={URLs} authed={authed} requestSignIn={requestSignIn} {...props}/>}/>
                         <Route path="/thankyou" component={ThankYou}/>
-                        <PrivateRoute authed={authed} path="/mypranks" component={MyPranks}/>
+                        <PrivateRoute URLs={URLs} authed={authed} path="/mypranks" component={MyPranks}/>
                         <Route component={Whoops404}/>
                     </Switch>
                     <Footer />

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import { logout } from '../../helpers/firebaseFunctions'
 import logo from '../../images/simple_fuck_logo_right.png'
-import profile_pic_placeholder from '../../images/silhouette.jpg'
+import { Profile } from './Profile'
 
 export const NavbarInstance = ({authed, user}) => (
     <div>
@@ -19,11 +19,7 @@ export const NavbarInstance = ({authed, user}) => (
                 <Navbar.Toggle />
             </Navbar.Header>
             <div id="navbarProfileMobile">
-                {localStorage.accessToken !== "undefined" ?
-                    <img src={`https://graph.facebook.com/me/picture?access_token=${localStorage.accessToken}`}
-                         alt="profile-pic"></img> :
-                    <img src={profile_pic_placeholder} alt="profile-pic"></img>}
-                <p>{user.displayName.split(" ")[0]}</p>
+                <Profile user={user}/>
             </div>
             <Navbar.Collapse>
                 {authed === false ?
@@ -38,11 +34,7 @@ export const NavbarInstance = ({authed, user}) => (
                         <Nav pullRight>
                             <NavItem id="navbarItemProfile">
                                 <div id="navbarProfile">
-                                    {localStorage.accessToken !== "undefined" ?
-                                        <img src={`https://graph.facebook.com/me/picture?access_token=${localStorage.accessToken}`}
-                                             alt="profile-pic"></img> :
-                                        <img src={profile_pic_placeholder} alt="profile-pic"></img>}
-                                    <p>{user.displayName.split(" ")[0]}</p>
+                                    <Profile user={user}/>
                                 </div>
                             </NavItem>
                         </Nav>

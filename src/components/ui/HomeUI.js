@@ -20,7 +20,7 @@ export class HomeUI extends Component {
 		const divStyle = {display: "none"}
 		return (
 	        <div className={homeTransitionClass}>
-				<img src={wallpaper} onLoad={this.showHome.bind(this)} alt="image tag triggering showHome" style={divStyle}/>
+				<img src={wallpaper} onLoad={this.showHome.bind(this)} alt="triggering showHome" style={divStyle}/>
 	        	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
 	        	<div id="background-container"></div>
 		        <div id="pitchText">

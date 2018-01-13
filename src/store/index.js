@@ -4,16 +4,18 @@ import sampleData from './initialState'
 import { activateLogger } from '../config/constants'
 
 const logger = store => next => action => {
+	let result
 	if (activateLogger) {
-		let result
 		console.group('dispatching action => ', action.type)
 		console.log('prev states', store.getState())
 		console.log('action', action)
 		result = next(action)
 		console.log('next state', store.getState())
 		console.groupEnd()
-		return result
+	} else {
+		result = next(action)
 	}
+	return result
 }
 
 const saver = store => next => action => {

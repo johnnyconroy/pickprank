@@ -1,4 +1,4 @@
-#gallery-list {
+.gallery-list {
     list-style-type: none;
     padding: 0;
     margin: 100px 5%;
@@ -15,7 +15,7 @@
     }
 }
 
-#gallery-loader {
+.gallery-loader {
     margin: auto;
     position: relative;
     top: -100px;
