@@ -12,5 +12,5 @@ Whoops404.defaultProps = {
 }
 
 Whoops404.propTypes = {
-  location: PropTypes.string
+  location: PropTypes.object
 }

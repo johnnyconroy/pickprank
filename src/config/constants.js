@@ -3,7 +3,7 @@ import firebase from 'firebase'
 /**
  * Logger
  */
- export const activateLogger = true
+ export const activateLogger = false
 
 /**
  * Firebase
