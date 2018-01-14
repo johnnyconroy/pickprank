@@ -1,3 +1,3 @@
- See demo at http://pickprank-app.com
+ GitHub pages gosting ==> http://pickprank-app.com
   
- See another version (with routing supported) at https://picpranck.firebaseapp.com
+ Firebase hosting (front-end routing supported) ==> https://picpranck.firebaseapp.com
