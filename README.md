@@ -1,3 +1,3 @@
- GitHub pages gosting ==> http://pickprank-app.com
+ GitHub pages hosting ==> http://pickprank-app.com
   
- Firebase hosting (front-end routing supported) ==> https://picpranck.firebaseapp.com
+ Firebase hosting (front-end routing supported on desktop Chrome) ==> https://picpranck.firebaseapp.com
