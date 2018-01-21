@@ -17,7 +17,7 @@ export const Gallery = ({galleryURLs, authed, requestSignIn}) => {
 	return(
         <div>
         	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
-            <p className="dummyTitle"> Gallery Pickpranks</p>
+            <p className="dummyTitle"> Gallery Pictures</p>
             <ul className="gallery-list">{listComponent}</ul>
         </div>
 	)
