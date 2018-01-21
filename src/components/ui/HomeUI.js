@@ -24,7 +24,7 @@ export class HomeUI extends Component {
 	        	<FacebookLogin authed={authed} requestSignIn={requestSignIn}/>
 	        	<div id="background-container"></div>
 		        <div id="pitchText">
-		            <p> <span>Create customizable pranks and send them to your friends! HEHE</span> </p>
+		            <p> <span>Create customizable pranks and send them to your friends! </span> </p>
 		        </div>
 			    <div id="carousel-container">
 			    	<div id="carousel-inner">
