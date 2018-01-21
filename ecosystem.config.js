@@ -12,7 +12,10 @@ module.exports = {
       repo: 'git@github.com:johnnyconroy/pickprank.git',
       path: '/home/ubuntu/pickprank-app',
       'post-setup': 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
-      'post-deploy': 'pm2 startOrRestart ecosystem.config.js --env production'
+      'post-deploy': 'pm2 startOrRestart ecosystem.config.js --env production',
+      env: {
+          'NODE_ENV': 'production'
+      }
     }
   }
 }
