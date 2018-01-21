@@ -20,3 +20,4 @@ module.exports = app;
 // chrome://inspect/#devices
 // node --inspect --debug-brk server.js
 // zip CLI ==> git archive -v -o ../myapp.zip --format=zip HEAD
+// https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
