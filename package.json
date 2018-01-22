@@ -25,7 +25,7 @@
   },
   "scripts": {
     "flow": "flow",
-    "deploy-aws": "npm run deploy && git add . && git commit -m 'deploy-aws'",
+    "deploy-aws": "npm run deploy && git add . && git commit -m 'deploy-aws' && git push && pm2 deploy ecosystem.config.js production",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build-css": "node-sass-chokidar src/ -o src/",
