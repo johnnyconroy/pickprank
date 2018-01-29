@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-52-25-222-178.us-west-2.compute.amazonaws.com',
+      host: 'ec2-34-213-116-103.us-west-2.compute.amazonaws.com',
       key: '~/.ssh/jsk-pickprank-key-pair.pem',
       ref: 'origin/master',
       repo: 'git@github.com:johnnyconroy/pickprank.git',
